@@ -1,0 +1,10 @@
+    "password":"Qwer1234",
+    "name":"michael",
+    "email":"michael@gmail.com",
+    "pin":123456
+
+    
+    "password":"Qwer1234",
+    "name":"Michael Jacob",
+    "email":"michaeljacob@gmail.com",
+    "pin":123456

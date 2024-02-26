@@ -1,0 +1,46 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3300/fazzpay?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+  sql:
+    init:
+      mode: always
+  batch:
+    jdbc:
+      initialize-schema: always
+  output:
+    ansi:
+      enabled: always
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: fazzpay.mail@gmail.com
+    password: vbnpmvuobsvuyxih
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+fazzpay:
+  app:
+    image-directory: user-image

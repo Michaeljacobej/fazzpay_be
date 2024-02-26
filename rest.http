@@ -1,0 +1,161 @@
+@url = http://localhost:8080/api/v1
+@token = {{login.response.body.data.token}}
+
+###
+### Auth
+###
+### 1. Register
+POST {{url}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Ilham Ferdian",
+  "email": "ilhamferdian88@gmail.com",
+  "password": "pass123",
+  "pin": "123456"
+}
+
+### 2. Login
+# @name login
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "ilhamferdian88@gmail.com",
+  "password": "pass123"
+}
+
+### 3. Request Reset Password
+POST {{url}}/auth/request-reset
+Content-Type: application/json
+
+{
+  "email": "ilhamferdian88@gmail.com"
+}
+
+### 4. Reset Password
+POST {{url}}/auth/reset-password
+Content-Type: application/json
+
+{
+  "email": "ilhamferdian88@gmail.com",
+  "token": "410746",
+  "password": "pass123"
+}
+
+###
+### Wallet
+###
+### 1. Get Balance
+GET {{url}}/wallet/balance
+Authorization: Bearer {{token}}
+
+###
+### Transfer
+###
+### 1. Transfer
+POST {{url}}/transaction/transfer
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "to": 2,
+  "amount": 1000
+}
+
+### 2. Transfer
+GET {{url}}/transaction
+Authorization: Bearer {{token}}
+
+### 3. Transaction Total
+GET {{url}}/transaction/total
+Authorization: Bearer {{token}}
+
+### 4. Transaction Week
+GET {{url}}/transaction/weekly
+Authorization: Bearer {{token}}
+
+###
+### Withdrawal
+###
+### 1. Add Withdrawal
+POST {{url}}/withdrawal
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "pin" : "123456",
+  "methodName": "Transfer Rekening",
+  "amount": 1000
+}
+
+### 2. Show Withdrawals by User ID
+GET {{url}}/transaction/withdrawal
+Authorization: Bearer {{token}}
+
+###
+### Payment 
+###
+### 1. Merchant - Tokopedia
+POST {{url}}/payment/post
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "merchantId": 1,
+  "amount": 10000
+}
+
+###
+### Contact
+###
+### 1. Add Contact
+POST {{url}}/contact
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "contactId": 2
+}
+
+### 2. Search Contact
+GET {{url}}/contact/search/ilhamferdian88@gmail.com
+Authorization: Bearer {{token}}
+
+###
+GET {{url}}/contact
+Authorization: Bearer {{token}}
+
+###
+### Phone
+###
+### 1. Add phone
+POST {{url}}/phone
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "phone": "12345679"
+}
+
+### 2. Get phone
+POST {{url}}/phone/set-primary
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "phone": "12345679"
+}
+
+### 3. Get phone
+GET {{url}}/phone
+Authorization: Bearer {{token}}
+
+### 4. Remove phone
+DELETE {{url}}/phone
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "phone": "12345679"
+}
